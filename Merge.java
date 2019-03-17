@@ -3,23 +3,32 @@ public class Merge {
     public static void mergesort(int[] data) {
 	mergesortH(data, 0, data.length-1);
     }
+    public static void merge(int[] data, int hi){
+	int[] left = new int[hi/2];
+	int[] right = new int[hi/2];
+	for(int i = 0; i < left.length; i++) {
+	    left[i] = data[i];
+	    right[i] = data[i+left.length];
+	}
+	for(int i = 0; i < left.length*2; i++) {
+	    if (left[i] < right[i]) {
+		data[i] = left[i];
+	    } else {
+		data[i] = right[i];
+	    }
+	}
+    }
     public static void mergesortH(int[] data, int lo, int hi) {
 	if (lo >= hi) {
 	    return;
 	} else {
 	    mergesortH(data, lo, hi/2);
-	    mergesortH(data, hi/2, lo);
-	    for(int i = 0; i < data.length-1; i++) {
-		if (data[i+1] < data[i]) {
-		    int old = data[i+1];
-		    data[i+1] = data[i];
-		    data[i] = old;
-		}
-	    }
+	    mergesortH(data, (hi-lo)/2 + (data.length/2), hi);
+	    merge(data, hi);
 	}
     }
     public static void main(String[] args) {
-	int[]data = new int[]{100,10,2,3,4,999,1,79,999};
+	int[]data = new int[]{100,10,2,3,999,1,79,999,4};
 	mergesort(data);
 	System.out.println(Arrays.toString(data));
     }
