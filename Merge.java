@@ -10,11 +10,16 @@ public class Merge {
 	    left[i] = data[i];
 	    right[i] = data[i+left.length];
 	}
-	for(int i = 0; i < left.length*2; i++) {
+	int i = 0;
+	int j = 0;
+	int dataIndex = 0;
+	while(i < left.length && j < right.length) {
 	    if (left[i] < right[i]) {
-		data[i] = left[i];
+		data[dataIndex] = left[i];
+		i++;
 	    } else {
-		data[i] = right[i];
+		data[dataIndex] = right[j];
+		j++;
 	    }
 	}
     }
