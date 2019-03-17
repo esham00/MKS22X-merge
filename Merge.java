@@ -14,13 +14,14 @@ public class Merge {
 	int j = 0;
 	int dataIndex = 0;
 	while(i < left.length && j < right.length) {
-	    if (left[i] < right[i]) {
+	    if (left[i] < right[j]) {
 		data[dataIndex] = left[i];
 		i++;
 	    } else {
 		data[dataIndex] = right[j];
 		j++;
 	    }
+	    dataIndex++;
 	}
     }
     public static void mergesortH(int[] data, int lo, int hi) {
