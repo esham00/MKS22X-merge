@@ -11,15 +11,16 @@ public class Merge {
 	return output;
     }
     public static void merge(int[] data, int low, int hi){
-	int[] left = new int[(hi-low)/2];
-	int[] right = new int[(hi-low)/2];
+	int[] left = new int[(hi-low)/2+1];
+	int[] right = new int[(hi-low)/2+1];
+	System.out.println("left length: " + left.length);
+	System.out.println("right length: " + right.length);
 	for(int i = 0; i < left.length; i++) {
-	    left[i] = data[i];
-	    right[i] = data[i+left.length];
+	    left[i] = data[i+low];
+	    right[i] = data[i+left.length+low];
 	}
 	System.out.println(Arrays.toString(left));
 	System.out.println(Arrays.toString(right));
-	
 	int i = 0;
 	int j = 0;
 	int dataIndex = low;
@@ -48,13 +49,14 @@ public class Merge {
 	if (lo >= hi) {
 	    return;
 	} else {
-	    mergesortH(data, lo, hi/2);
-	    mergesortH(data, (hi-lo)/2 + (data.length/2), hi);
+	    System.out.println("low: " + lo + " high: " + hi);
+	    mergesortH(data, lo, (hi+lo)/2);
+	    mergesortH(data, (hi+lo)/2+1, hi);
 	    merge(data, lo, hi);
 	}
     }
     public static void main(String[] args) {
-	int[]data = new int[]{100,10,2,3,999,1,79,999,4};
+	int[]data = new int[]{38, 27,43,3,9,82,10,12};
 	mergesort(data);
 	System.out.println(Arrays.toString(data));
     }
