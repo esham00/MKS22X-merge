@@ -13,10 +13,15 @@ public class Merge {
     public static void merge(int[] data, int low, int hi){
 	int[] left = new int[(hi-low)/2+1];
 	int[] right = new int[(hi-low)/2+1];
+	if (((hi-low)/2) % 2 == 1) {
+	    right = new int[(hi-low)/2];
+	}
 	System.out.println("left length: " + left.length);
 	System.out.println("right length: " + right.length);
 	for(int i = 0; i < left.length; i++) {
 	    left[i] = data[i+low];
+	}
+	for(int i = 0; i < right.length; i++) {
 	    right[i] = data[i+left.length+low];
 	}
 	System.out.println(Arrays.toString(left));
@@ -56,7 +61,7 @@ public class Merge {
 	}
     }
     public static void main(String[] args) {
-	int[]data = new int[]{38, 27,43,3,9,82,10,12};
+	int[]data = new int[]{38, 27,43,3,9,82,10};
 	mergesort(data);
 	System.out.println(Arrays.toString(data));
     }
