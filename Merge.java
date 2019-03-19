@@ -15,39 +15,13 @@ public class Merge {
 	int length = hi-low+1;
 	int[] right = new int[(length)/2];
 	int[] left = new int[length - right.length];
-        // System.out.println("left length: " + left.length);
-	// System.out.println("right length: " + right.length);
-	//input values from the left half of the data
+    	//input values from the left half of the data
 	for(int i = 0; i < left.length; i++) {
 	    left[i] = data[i+low];
 	}
 	for(int i = 0; i < right.length; i++) {
 	    right[i] = data[i+left.length+low];
 	}
-        // for(int i = 0; i < right.length; i ++) {
-	//      if (i + left.length+low == 31250) {
-	// 	System.out.println(Arrays.toString(left));
-	// 	System.out.println(Arrays.toString(right));
-	// 	//System.out.println("index: " + i);
-	// 	System.out.println("left length: " + left.length);
-	// 	System.out.println("right length: " + right.length);
-	// 	System.out.println("low: " + low);
-	// 	System.out.println("high: " + hi);
-	// 	System.out.println("data length: " + data.length);
-	//      }
-	// }
-	// System.out.println("low: " + low);
-	// System.out.println("high: " + hi);
-	// System.out.println("low: " + low);
-	// System.out.println("right: " +right.length);
-	// System.out.println("high: " + hi);
-	//input values from the right half of the array
-	// for(int i = 0; i < right.length; i++) {
-	//     //System.out.println(i);
-	//     right[i] = data[i+left.length+low];
-	// }
-	// System.out.println(Arrays.toString(left));
-        // System.out.println(Arrays.toString(right));
 	int i = 0;
 	int j = 0;
 	int dataIndex = low;
@@ -59,7 +33,6 @@ public class Merge {
 		data[dataIndex] = right[j];
 		j++;
 	    }
-	    //System.out.println(data[dataIndex]);
 	    dataIndex++;
 	}
 	while (i < left.length) {
@@ -77,17 +50,12 @@ public class Merge {
 	if (lo >= hi) {
 	    return;
 	} else {
-	    // System.out.println("low: " + lo + " high: " + hi);
 	    mergesortH(data, lo, (hi+lo)/2);
 	    mergesortH(data,(hi+lo)/2+1, hi);
 	    merge(data, lo, hi);
 	}
     }
     public static void main(String[] args) {
-	int[]data = new int[]{38, 27,43,3,9,82,10};
-	mergesort(data);
-	System.out.println(Arrays.toString(data));
-	System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
 	int[]MAX_LIST = {1000000000,500,10};
     	for(int MAX : MAX_LIST){
     	    for(int size = 31250; size < 2000001; size*=2){
