@@ -22,9 +22,10 @@ public class Merge {
 	for(int i = 0; i < right.length; i++) {
 	    right[i] = data[i+left.length+low];
 	}
-	if(left.length<3) {
-	    insertionsort(left);
-	    insertionsort(right);
+	if(right.length<3) {
+	    // insertionsort(left);
+	    // insertionsort(right);
+	    insertionsort(data, low, hi);
 	    System.out.println(Arrays.toString(left));
 	    System.out.println(Arrays.toString(right));
 	    return;
